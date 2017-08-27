@@ -34,7 +34,9 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+
+  '/cached_lookup/:id':'UsersController.cachedLookup'
 
   /***************************************************************************
   *                                                                          *

@@ -1,6 +1,22 @@
 version: '3'
 
 services:
+  db:
+    image: mongo
+    networks:
+    - sails_net
+    ports:
+    - "27017:27017"
+    volumes:
+    - ./data:/data/db
+  redis:
+    image: redis
+    networks:
+    - sails_net
+    ports:
+    - "6379:6379"
+    volumes:
+    - ./redis.conf:/usr/local/etc/redis/redis.conf
   web:
     build: .
     ports:
@@ -8,18 +24,6 @@ services:
     networks:
     - sails_net
     env_file: .env
-  db:
-    image: mongo
-    networks:
-    - sails_net
-    ports:
-    - "27017:27017"
-  redis:
-    image: redis
-    networks:
-    - sails_net
-    ports:
-    - "6379:6379"
 
 networks:
   sails_net:
