@@ -1,9 +1,7 @@
-FROM node:6
+FROM node:6-alpine
 
 # Create app directory
 WORKDIR /usr/src/app
-
-RUN npm -g install sails
 
 # Install app dependencies
 COPY sails_app .

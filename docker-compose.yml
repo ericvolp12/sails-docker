@@ -27,4 +27,3 @@ services:
 
 networks:
   sails_net:
-    driver: "bridge"
