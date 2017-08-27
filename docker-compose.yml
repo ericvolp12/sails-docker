@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+    - "1337:1337"
+    networks:
+    - sails_net
+    env_file: .env
+  db:
+    image: mongo
+    networks:
+    - sails_net
+    ports:
+    - "27017:27017"
+  redis:
+    image: redis
+    networks:
+    - sails_net
+    ports:
+    - "6379:6379"
+
+networks:
+  sails_net:
+    driver: "bridge"
