@@ -28,10 +28,10 @@ function populateUser(id) {
     Users.findOne(id).then(function (record) {
       record.cachedAt = Date.now();
       client.set(id, JSON.stringify(record), redis.print);
-      resolve(record);
+      return resolve(record);
     }, function (err) {
       sails.log.error("Error populating the cache: %s", err);
-      reject(err);
+      return reject(err);
     });
   });
 }
@@ -46,24 +46,22 @@ module.exports = {
             sails.log.silly("Cached record has expired");
             populateUser(id).then(function (record) {
               sails.log.silly("Serving freshly cached record...");
-              resolve(record);
+              return resolve(record);
             }, function (err) {
-              reject(err);
+              return reject(err);
             });
-          }else {
-            sails.log.silly("Serving cached record...");
-            resolve(res);
           }
-        } else {
-          populateUser(id).then(function (record) {
-            resolve(record);
-          }, function (err) {
-            reject(err);
-          });
+          sails.log.silly("Serving cached record...");
+          return resolve(res);
         }
+        populateUser(id).then(function (record) {
+          return resolve(record);
+        }, function (err) {
+          return reject(err);
+        });
       }, function (err) {
         sails.log.error("Error looking up in cache: %s", err);
-        reject(err);
+        return reject(err);
       });
     });
   }

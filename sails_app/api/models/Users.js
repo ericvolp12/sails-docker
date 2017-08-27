@@ -8,22 +8,27 @@
 module.exports = {
 
   attributes: {
-    name: {
+    firstName: {
       type: "string",
       required: true
     },
-    birthdate: {
-      type: "date",
+    lastName: {
+      type: "string",
       required: true
     },
-    username: {
+    photo: {
       type: "string",
+      required: true
+    },
+    googleId: {
+      type: "integer",
       required: true,
       unique: true
     },
     email: {
       type: "string",
-      required: "true"
+      required: true,
+      unique: true
     }
   }
 };

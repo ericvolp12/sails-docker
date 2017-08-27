@@ -20,6 +20,7 @@
  * http://sailsjs.org/#!/documentation/concepts/Routes/RouteTargetSyntax.html
  */
 
+
 module.exports.routes = {
 
   /***************************************************************************
@@ -36,7 +37,13 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  '/cached_lookup/:id':'UsersController.cachedLookup'
+  '/cached_lookup/:id':'UsersController.cachedLookup',
+
+  'GET /auth/google': 'AuthController.getLogin',
+
+  'GET /auth/google/callback': 'AuthController.login',
+
+  'GET /logout': 'AuthController.logout'
 
   /***************************************************************************
   *                                                                          *
