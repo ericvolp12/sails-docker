@@ -28,6 +28,9 @@ before_script:
 
   - docker ps
 
+script:
+  - cd sails_app/
+  - npm test
 
 after_script:
   - docker-compose down
