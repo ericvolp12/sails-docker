@@ -35,7 +35,8 @@
   "scripts": {
     "debug": "node debug app.js",
     "start": "node app.js",
-    "test": "node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/integration/**/*.test.js"
+    "test": "mocha",
+    "cover": "istanbul cover _mocha"
   },
   "main": "app.js",
   "repository": {
