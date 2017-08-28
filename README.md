@@ -1,4 +1,7 @@
-# Sails Docker Application [![Build Status](https://travis-ci.org/ericvolp12/sails-docker.svg?branch=master)](https://travis-ci.org/ericvolp12/sails-docker)
+# Sails Docker Application 
+[![Build Status](https://travis-ci.org/ericvolp12/sails-docker.svg?branch=master)](https://travis-ci.org/ericvolp12/sails-docker) [![Coverage Status](https://coveralls.io/repos/github/ericvolp12/sails-docker/badge.svg?branch=master)](https://coveralls.io/github/ericvolp12/sails-docker?branch=master)
+
+
 This is a sample application for running a sails instance inside of docker containers. I've provided an ecosystem using MongoDB, Redis, Google's Oauth2, and SailsJS.
 
 ## Installation
