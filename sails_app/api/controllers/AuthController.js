@@ -27,9 +27,9 @@ passport.use(new GoogleStrategy({
       photo: profile.photos[0].value,
       email: profile.emails[0].value
     }).then(function (user) {
-      return done(user);
+      return done(null, user);
     }, function (err) {
-      return done(err);
+      return done(err, null);
     });
   })
 );
@@ -43,22 +43,14 @@ module.exports = {
       if (err) {
         return res.json(500, err);
       }
-      return res.json(200, user);
+      req.session.user = user;
+      return res.redirect("/");
     })(req, res, next);
   },
 
   logout: function (req, res) {
-    req.logout();
-    return res.ok('Logged out successfully.');
-  },
-  signup: function (req, res) {
-    Users.create(req.params.all()).exec(function (err, user) {
-      if (err) return res.negotiate(err);
-      req.login(user, function (err) {
-        if (err) return res.negotiate(err);
-        return res.redirect('/');
-      });
-    });
+    req.session.destroy();
+    return res.redirect('/?loggedOut=true');
   }
 };
 
