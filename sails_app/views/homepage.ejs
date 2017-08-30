@@ -47,6 +47,7 @@
         <table class="table">
           <thead class="thead-inverse">
           <tr>
+            <th>Photo</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email Address</th>
@@ -55,6 +56,9 @@
           <tbody>
           <%for(var i = 0; i < users.length; i++){%>
           <tr>
+            <td>
+              <img src="<%=users[i].photo%>" >
+            </td>
             <td><%=users[i].firstName%></td>
             <td><%=users[i].lastName%></td>
             <td><%=users[i].email%></td>
